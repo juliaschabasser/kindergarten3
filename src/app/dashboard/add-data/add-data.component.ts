@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { kindergardens, children } from 'src/app/shared/data';
-import { v4 as uuid } from 'uuid';
+import { kindergardens } from 'src/app/shared/data';
 
 @Component({
   selector: 'app-add-data',
@@ -25,19 +24,7 @@ export class AddDataComponent implements OnInit{
 
   onSubmit() {
     if(this.addChildForm.valid) {
-
-      var kindergarten = kindergardens.find(kindergarden => kindergarden.id == this.addChildForm.value.kindergarten);
-
-      if (!kindergarten) {
-        throw new Error("Unexpected error: Missing name");
-      }
-
-      children.push({
-        id: uuid(),
-        name: this.addChildForm.value.name,
-        birthDate: this.addChildForm.value.birthDate,
-        kindergarten: kindergarten
-      });
+      console.log(this.addChildForm.value);
     }
   }
 }
